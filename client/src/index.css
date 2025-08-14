@@ -1,0 +1,216 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: "Inter", system-ui, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+  }
+
+  :root {
+    /* Layout */
+    --bg: #f9fafb; /* gray-50 */
+    --text: #0f172a; /* slate-900 */
+    --card-bg: #ffffff;
+    --card-border: #e5e7eb; /* gray-200 */
+
+    /* Primary (default: blue) */
+    --primary-50: #eff6ff;
+    --primary-500: #3b82f6;
+    --primary-600: #2563eb;
+    --primary-700: #1d4ed8;
+
+    /* Muted */
+    --muted-100: #f1f5f9; /* slate-100 */
+    --muted-200: #e2e8f0; /* slate-200 */
+    --muted-700: #334155; /* slate-700 */
+  }
+
+  [data-theme="dark"] {
+    --bg: #0b1220; /* custom deep */
+    --text: #e5e7eb; /* gray-200 */
+    --card-bg: #0f172a; /* slate-900 */
+    --card-border: #1f2937; /* gray-800 */
+    --muted-100: #111827; /* gray-900 */
+    --muted-200: #374151; /* gray-700 */
+    --muted-700: #cbd5e1; /* slate-300 */
+  }
+
+  /* Accent themes */
+  [data-accent="blue"] {
+    --primary-50: #eff6ff;
+    --primary-500: #3b82f6;
+    --primary-600: #2563eb;
+    --primary-700: #1d4ed8;
+  }
+
+  [data-accent="violet"] {
+    --primary-50: #f5f3ff;
+    --primary-500: #8b5cf6;
+    --primary-600: #7c3aed;
+    --primary-700: #6d28d9;
+  }
+
+  [data-accent="emerald"] {
+    --primary-50: #ecfdf5;
+    --primary-500: #10b981;
+    --primary-600: #059669;
+    --primary-700: #047857;
+  }
+
+  [data-accent="rose"] {
+    --primary-50: #fff1f2;
+    --primary-500: #f43f5e;
+    --primary-600: #e11d48;
+    --primary-700: #be123c;
+  }
+
+  [data-accent="amber"] {
+    --primary-50: #fffbeb;
+    --primary-500: #f59e0b;
+    --primary-600: #d97706;
+    --primary-700: #b45309;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    color: #fff;
+    background-color: var(--primary-600);
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    transition: background-color 200ms ease;
+  }
+  .btn-primary:hover {
+    background-color: var(--primary-700);
+  }
+
+  .btn-secondary {
+    color: var(--muted-700);
+    background-color: var(--muted-100);
+    border: 1px solid var(--card-border);
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    transition: background-color 200ms ease, color 200ms ease,
+      border-color 200ms ease;
+  }
+  .btn-secondary:hover {
+    background-color: var(--muted-200);
+  }
+
+  .input-field {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--card-border);
+    border-radius: 0.5rem;
+    background-color: var(--card-bg);
+    color: var(--text);
+    outline: none;
+    transition: box-shadow 200ms ease, border-color 200ms ease;
+  }
+  .input-field:focus {
+    border-color: transparent;
+    box-shadow: 0 0 0 2px var(--primary-500);
+  }
+
+  .card {
+    background-color: var(--card-bg);
+    color: var(--text);
+    border: 1px solid var(--card-border);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  }
+
+  /* Polished UI helpers */
+  .card-hover {
+    transition: transform 200ms ease, box-shadow 200ms ease,
+      border-color 200ms ease;
+  }
+  .card-hover:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
+    border-color: var(--primary-500);
+  }
+
+  .toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--muted-100);
+    border: 1px solid var(--card-border);
+    border-radius: 0.75rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .icon-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--card-border);
+    background-color: var(--card-bg);
+    transition: background-color 150ms ease, border-color 150ms ease,
+      transform 150ms ease;
+  }
+  .icon-button:hover {
+    background-color: var(--muted-100);
+    border-color: var(--primary-500);
+  }
+
+  .badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    padding: 0.125rem 0.5rem;
+    border-radius: 9999px;
+    border: 1px solid var(--card-border);
+    color: var(--text);
+    opacity: 0.8;
+  }
+  .badge-accent {
+    background-color: var(--primary-50);
+    color: var(--primary-700);
+    border-color: transparent;
+  }
+
+  .section-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    opacity: 0.8;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  /* Variable-based helpers for theming */
+  .bg-surface {
+    background-color: var(--card-bg);
+  }
+  .border-surface {
+    border-color: var(--card-border);
+  }
+  .text-base-color {
+    color: var(--text);
+  }
+  .bg-accent-50 {
+    background-color: var(--primary-50);
+  }
+  .text-accent-700 {
+    color: var(--primary-700);
+  }
+  .ring-accent-500 {
+    box-shadow: 0 0 0 2px var(--primary-500);
+  }
+  .hover-accent-50:hover {
+    background-color: var(--primary-50);
+  }
+}
+
+/* App background */
+.app-bg {
+  background-color: var(--bg);
+  color: var(--text);
+}
